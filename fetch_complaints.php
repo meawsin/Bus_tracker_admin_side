@@ -14,7 +14,6 @@ if ($conn->connect_error) {
     die(json_encode(array("status" => "error", "message" => "Database connection failed: " . $conn->connect_error)));
 }
 
-// If the request method is GET, fetch the data
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $tables = ["complaints"];
     $response = array();
@@ -37,9 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     echo json_encode(array("status" => "success", "data" => $response));
 }
 
-// If the request method is POST, update the data
 else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the posted data
     $id = $_POST['id'];
     $status = $_POST['status'];
 
@@ -47,14 +44,11 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die(json_encode(array("status" => "error", "message" => "Invalid input")));
     }
 
-    // Prepare the update query with parameterized statement to avoid SQL injection
     $query = "UPDATE complaints SET Status = ? WHERE id = ?";
     $stmt = $conn->prepare($query);
-    
-    // Bind parameters: 's' for string, 'i' for integer
+
     $stmt->bind_param("si", $status, $id);
 
-    // Execute the query
     if ($stmt->execute()) {
         echo json_encode(['status' => 'success']);
     } else {
