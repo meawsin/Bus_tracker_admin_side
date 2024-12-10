@@ -1,7 +1,5 @@
 <?php
 include 'databaseconnect.php'; // Database connection
-include 'header.php';
-include 'drawer.php';
 
 // Fetch all buses
 $buses = $conn->query("SELECT * FROM buses");
@@ -21,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     header('Location: buses.php');
     exit;
 }
+include 'header.php';
+include 'drawer.php';
 ?>
 
 <!DOCTYPE html>

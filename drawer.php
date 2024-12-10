@@ -42,10 +42,15 @@ function renderDrawer() {
                     Trip Details
                 </a>
             </li>
+            <li style='margin-bottom: 25px;'>
+                <a href='complaints.php' style='color: white; text-decoration: none; display: flex; align-items: center; padding: 15px 20px; border-radius: 10px; font-size: 18px; transition: background-color 0.3s, transform 0.3s;'>
+                    <i class='fas fa-exclamation-circle' style='margin-right: 15px; font-size: 22px;'></i>
+                    Complaints
+                </a>
+            </li>
         </ul>
     </nav>
-";
-
+    ";
 }
 ?>
 
@@ -55,7 +60,7 @@ function renderDrawer() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <?php renderDrawer(); ?>

@@ -1,17 +1,18 @@
-<?php
+<?php 
 session_start();
 include 'databaseconnect.php';
 $adminName = $_SESSION['adminName'];
 ?>
+
 <?php
 function renderHeader($adminName) {
     date_default_timezone_set("Asia/Dhaka");
-    $currentDateTime = date('d F Y | h:i:s');
+    $currentDateTime = date('l, F d Y | h:i:s A');
 
     echo "
-    <header style='background-color: #13691df2; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-family: Arial, sans-serif;'>
+    <header style='background-color: #1d7f28; font-size: 20px; font-weight: bold; color: white; padding: 14px; display: flex; justify-content: space-between; align-items: center; font-family: Arial, sans-serif; position: fixed; top: 0; left: 0; width: 98%; z-index: 10;'>
         
-        <span id='banglaDateTime' style='font-size: 18px;'>$currentDateTime</span>
+        <span id='DateTime' style='font-size: 18px;'>$currentDateTime</span>
         <span style='font-size: 18px; font-weight: bold;'>Welcome, $adminName!
         <button onclick='window.location.href=\"logout.php\"' style='background: none; border: none; color: white; cursor: pointer; font-size: 18px;'>Logout</button></span>
     </header>
@@ -27,35 +28,27 @@ function renderHeader($adminName) {
     <title>Admin Panel</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <script src="https://cdn.jsdelivr.net/npm/intl@1.2.5/locale-data/jsonp/bn-BD.js"></script>
 </head>
-<body>
+<body> 
     <?php renderHeader($adminName); ?> 
 
     <script>
         function updateDateTime() {
             const now = new Date();
-            
-            const banglaDateFormatter = new Intl.DateTimeFormat('bn-BD', {
+            const options = {
+                weekday: 'long',
                 day: '2-digit',
                 month: 'long',
-                year: 'numeric'
-            });
-            
-            const banglaTimeFormatter = new Intl.DateTimeFormat('bn-BD', {
+                year: 'numeric',
                 hour: '2-digit',
                 minute: '2-digit',
                 second: '2-digit',
                 hour12: true
-            });
+            };
 
-            const formattedDate = banglaDateFormatter.format(now);
-            const formattedTime = banglaTimeFormatter.format(now);
+            const formattedDateTime = now.toLocaleString('en-US', options);
 
-            const currentDateTime = formattedDate + " | " + formattedTime;
-
-            document.getElementById('banglaDateTime').innerHTML = currentDateTime;
+            document.getElementById('DateTime').innerHTML = formattedDateTime;
         }
         setInterval(updateDateTime, 1000);
     </script>
