@@ -31,7 +31,7 @@ function renderDrawer() {
                 </a>
             </li>
             <li style='margin-bottom: 25px;'>
-                <a href='send_message.php' style='color: white; text-decoration: none; display: flex; align-items: center; padding: 15px 20px; border-radius: 10px; font-size: 18px; transition: background-color 0.3s, transform 0.3s;'>
+                <a href='send_messages.php' style='color: white; text-decoration: none; display: flex; align-items: center; padding: 15px 20px; border-radius: 10px; font-size: 18px; transition: background-color 0.3s, transform 0.3s;'>
                     <i class='fas fa-paper-plane' style='margin-right: 15px; font-size: 22px;'></i>
                     Send Message to Users
                 </a>

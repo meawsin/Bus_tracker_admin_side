@@ -1,6 +1,10 @@
 <?php 
 session_start();
 include 'databaseconnect.php';
+if (!isset($_SESSION['adminName'])) {
+    header("Location: login.php");
+    exit(); 
+}
 $adminName = $_SESSION['adminName'];
 ?>
 
