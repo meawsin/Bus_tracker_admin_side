@@ -8,14 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // SQL query to check if the username exists in the database
     $sql = "SELECT * FROM admins WHERE username = '$username'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
 
-        // Direct comparison of the password (no hashing)
         if ($password == $row['password']) {
             $_SESSION['adminName'] = $row['username'];
             header("Location: index.php");
@@ -51,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            text-align: center;
         }
 
         .logo {
@@ -71,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         input[type="text"],
         input[type="password"] {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #16501d;
@@ -86,8 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         button {
-            width: 100%;
-            padding: 12px;
+            width: 40%;
+            padding: 10px;
             background-color: #16501d;
             color: white;
             border: none;
@@ -103,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .error-message {
             color: red;
             text-align: center;
-            margin-top: 10px;
+            margin-top: 14px;
         }
 
         .footer {
@@ -118,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <div class="logo">
-            <i class="fas fa-bus"></i> <!-- FontAwesome bus icon -->
+            <i class="fas fa-bus"></i>
         </div>
         <h1>Login</h1>
         <form method="post" action="login.php">

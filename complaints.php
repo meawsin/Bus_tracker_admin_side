@@ -40,6 +40,8 @@ include 'drawer.php';
                     <th style="padding: 10px;">Name</th>
                     <th style="padding: 10px;">Subject</th>
                     <th style="padding: 10px;">Details</th>
+                    <th style="padding: 10px;">BUP ID</th>
+                    <th style="padding: 10px;">Contact No.</th>
                     <th style="padding: 10px;">Status</th>
                     <th style="padding: 10px;">Action</th>
                 </tr>
@@ -50,7 +52,9 @@ include 'drawer.php';
                         <td style="padding: 10px;"><?= $row['id'] ?></td>
                         <td style="padding: 10px;"><?= $row['Name'] ?></td>
                         <td style="padding: 10px;"><?= $row['SUBJECT'] ?></td>
-                        <td style="padding: 10px;"><?= nl2br(substr($row['Details'], 0, 150)) ?><?php if (strlen($row['Details']) > 150) echo '...'; ?></td>
+                        <td style="padding: 10px;"><?= nl2br(substr($row['Details'], 0, 150)) ?><?php if (strlen($row['Details']) > 250) echo '...'; ?></td>
+                        <td style="padding: 10px;"><?= $row['BUP_ID'] ?></td>
+                        <td style="padding: 10px;"><?= $row['Contact_No'] ?></td>
                         <td style="padding: 10px;"><?= ucfirst(str_replace('_', ' ', $row['Status'])) ?></td>
                         <td style="padding: 10px;">
                             <form method="POST" style="display: flex; gap: 10px; align-items: center;">
